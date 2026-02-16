@@ -3,7 +3,6 @@
 # Load the sensitive variables from the .env file
 source .env
 
-
 LOG=$LOG_PATH
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
