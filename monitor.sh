@@ -21,6 +21,7 @@ fi
 # 3. Laptop checks
 # CPU temp with sensors
 TEMP=$(sensors | grep 'Package id 0:' | awk '{print $4}' | tr -d '+°C')
+TEMP=${TEMP%.*}  # removes decimal part
 MAX_TEMP=80  # adjust to your safe threshold
 
 if [ "$TEMP" -gt "$MAX_TEMP" ]; then
