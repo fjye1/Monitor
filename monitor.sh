@@ -39,6 +39,9 @@ if ! systemctl is-active --quiet $SERVICE_NAME_2.service; then
 fi
 STATUS_REPORT+="Service ($SERVICE_NAME_2): $SERVICE_STATUS\n"
 
-# Send comprehensive status email
-echo -e "$STATUS_REPORT" | mail -s "System Monitoring Report" $EMAIL
-echo "Status report sent to $EMAIL" >> $LOG
+# Send summary if running between 09:00 and 09:10
+CURRENT_HOUR=$(date +%H)
+CURRENT_MIN=$(date +%M)
+if [ "$CURRENT_HOUR" == "09" ] && [ "$CURRENT_MIN" -lt "10" ]; then
+    echo -e "$STATUS_REPORT" | mail -s "Daily System Monitoring Report" $EMAIL
+fi
