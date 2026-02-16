@@ -42,14 +42,3 @@ STATUS_REPORT+="Service ($SERVICE_NAME_2): $SERVICE_STATUS\n"
 # Send comprehensive status email
 echo -e "$STATUS_REPORT" | mail -s "System Monitoring Report" $EMAIL
 echo "Status report sent to $EMAIL" >> $LOG
-```
-
-**Key changes:**
-
-1. **Removed the 9am time check** - now sends a report every time it runs
-2. **Builds a status report** with all check results
-3. **Still sends individual alerts** for critical issues (website down, overheating, service down)
-4. **Always sends a summary email** at the end with the status of all systems
-
-The report will look like:
-```
