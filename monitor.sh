@@ -3,10 +3,10 @@
 # Load the sensitive variables from the .env file
 source /home/monitoring/scripts/Monitor/.env
 
-LOG=$LOG_PATH
+LOG="$LOG_PATH"
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
-echo "=== $DATE ===" >> $LOG
+echo "=== $DATE ===" >> "$LOG"
 
 # Initialize status report
 STATUS_REPORT="Monitoring Report - $DATE\n\n"
